@@ -1,0 +1,5 @@
+*.pyc
+.python-version
+db.sqlite3
+src/album_manager/migrations/
+src/albums/migrations/
