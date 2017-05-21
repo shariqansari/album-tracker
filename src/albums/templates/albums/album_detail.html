@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<h1>{{ object.title }}</h1>
+		<h2>Tracks</h2>
+		<table class="table">
+			<thead>
+				<th class="col-md-8">Title</th>
+				<th class="col-md-2">Latest Revision</th>
+				<th class="col-md-2">Finalized</th>
+			</thead>
+			<tbody>
+				{% for track in object.tracks.all %}
+					<tr>
+						<td><a href="{{ track.get_absolute_url }}">{{ track.title }}</a></td>
+						<td>{% if track.latest %}{{track.latest.upload_date}}{% else %} <em>No files.</em> {% endif %}</td>
+						<td>{{ track.finalized|yesno:"Yes,No" 	}}</td>
+					</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock content %}

@@ -3,3 +3,4 @@
 db.sqlite3
 src/album_manager/migrations/
 src/albums/migrations/
+*.DS_store

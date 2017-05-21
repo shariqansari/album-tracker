@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-12">
+			<h1>{{ object.album.title }}</h1>
+			<h2>{{ object.title }}</h2>
+			<hr>
+			<h3>Revisions</h3>
+			<table class="table">
+				<thead>
+					<th>Date Uploaded</th>
+					<th>Listen</th>
+					<th>Approved</th>
+				</thead>
+				<tbody>
+					{% for revision in object.revisions.all %}
+						<tr>
+							<td>{{ revision.date_uploaded }}</td>
+							<td>{{ revision.file }}</td>
+							<td>{{ revision.approved|yesno:"Approved,Pending" }}</td>
+						</tr>
+					{% empty %}
+						<tr>
+							<td colspan="3"><em>No revisions.</em></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock content %}
