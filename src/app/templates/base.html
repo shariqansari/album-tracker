@@ -1,0 +1,38 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>{{ site_title }} | {% block title %}Home{% endblock %}</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="{% static 'app/css/bootstrap.css' %}">
+		<link rel="stylesheet" href="{% static 'app/css/site.css' %}">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row site-header align-items-center">
+				<div class="col">
+					<h1>{{ site_title }}</h1>
+				</div>
+			</div>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			  <a class="navbar-brand" href="#">{{ site_title_short }}</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			    <div class="navbar-nav">
+			      <a class="nav-item nav-link" href="#">Dashboard</a>
+			      <a class="nav-item nav-link" href="#">Albums</a>
+			    </div>
+			  </div>
+			</nav>
+			<div class="row">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+		<script src="{% static 'app/js/jquery.js' %}"></script>
+		<script src="{% static 'app/js/bootstrap.js' %}"></script>
+	</body>
+</html>

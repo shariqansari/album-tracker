@@ -1,11 +1,22 @@
 from django.contrib import admin
 from . import models
 
-class TrackInlineAdmin(admin.StackedInline):
-	model = models.Track
-	extra = 0
-
+@admin.register(models.Album)
 class AlbumAdmin(admin.ModelAdmin):
-    inlines = [TrackInlineAdmin]
+    pass
 
-admin.site.register(models.Album, AlbumAdmin)
+@admin.register(models.Artist)
+class ArtistAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(models.Track)
+class TrackAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(models.Source)
+class SourceAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(models.Revision)
+class RevisionAdmin(admin.ModelAdmin):
+    pass

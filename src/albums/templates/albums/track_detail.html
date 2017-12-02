@@ -1,32 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<div class="row">
-		<div class="col-md-12">
-			<h1>{{ object.album.title }}</h1>
-			<h2>{{ object.title }}</h2>
-			<hr>
-			<h3>Revisions</h3>
-			<table class="table">
-				<thead>
-					<th>Date Uploaded</th>
-					<th>Listen</th>
-					<th>Approved</th>
-				</thead>
-				<tbody>
-					{% for revision in object.revisions.all %}
-						<tr>
-							<td>{{ revision.date_uploaded }}</td>
-							<td>{{ revision.file }}</td>
-							<td>{{ revision.approved|yesno:"Approved,Pending" }}</td>
-						</tr>
-					{% empty %}
-						<tr>
-							<td colspan="3"><em>No revisions.</em></td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
+	<div class="col-12">
+		<h2>{{ object.album.title }}</h2>
+		<hr>
+		<h3>Track Details</h3>
+		<dl class="row">
+			<dt class="col-2">Title</dt>
+			<dd class="col-10">{{ object.title}}</dd>
+			<dt class="col-2" >Sources</dt>
+			<dd class="col-10">
+				{% for source in object.sources.all %}
+					<a href="{{ source.url }}">{{ source.title }}</a><br>
+				{% empty %}
+					No sources specified.
+				{% endfor %}
+			</dd>
+			<dt class="col-2" >Artists</dt>
+			<dd class="col-10">{{ object.artists.all|join:", "|default:"No artists assigned." }}</dd>
+		</dl>
+		<h3>Revisions</h3>
+		<p>
+			This track is {{ object.finalized|yesno:",not" }} finalized.
+		</p>
+		<table class="table">
+			<thead>
+				<th class="col-3">Date Uploaded</th>
+				<th class="col-6">Listen</th>
+				<th class="col-3">Approved</th>
+			</thead>
+			<tbody>
+				{% for revision in object.revisions.all %}
+					<tr>
+						<td>{{ revision.date_uploaded }}</td>
+						<td>{{ revision.file }}</td>
+						<td>{{ revision.approved|yesno:"Approved,Pending" }}</td>
+					</tr>
+				{% empty %}
+					<tr>
+						<td colspan="3"><em>No revisions.</em></td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 	</div>
 {% endblock content %}

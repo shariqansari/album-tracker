@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Gentium+Basic|Titillium+Web');
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Gentium Basic', serif;
+  margin: 20px 0px 10px;
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.site-header {
+  min-height: 150px;
+  background-color: #3f4856;
+  color: white;
+}

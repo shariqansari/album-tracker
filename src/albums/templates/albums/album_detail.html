@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row">
-	<div class="col-md-12">
-		<h1>{{ object.title }}</h1>
-		<h2>Tracks</h2>
+	<div class="col-12">
+		<h2>{{ object.title }}</h2>
+		<h3>Tracks</h3>
 		<table class="table">
 			<thead>
-				<th class="col-md-8">Title</th>
-				<th class="col-md-2">Latest Revision</th>
-				<th class="col-md-2">Finalized</th>
+				<th class="col-8">Title</th>
+				<th class="col-2">Latest Revision</th>
+				<th class="col-2">Finalized</th>
 			</thead>
 			<tbody>
 				{% for track in object.tracks.all %}
@@ -18,8 +17,8 @@
 						<td>{% if track.latest %}{{track.latest.upload_date}}{% else %} <em>No files.</em> {% endif %}</td>
 						<td>{{ track.finalized|yesno:"Yes,No" 	}}</td>
 					</tr>
+					{% endfor %}
 			</tbody>
 		</table>
 	</div>
-</div>
-{% endblock content %}
+{% endblock %}
